@@ -1,45 +1,101 @@
-// Danh sách các lời chúc
-const messages = [
-    "Chúc bạn luôn xinh đẹp và tràn đầy năng lượng!",
-    "Cảm ơn bạn vì đã luôn tỏa sáng và truyền cảm hứng!",
-    "Chúc bạn một ngày 20/10 thật hạnh phúc và nhiều yêu thương!",
-    "Chúc bạn luôn mạnh mẽ và thành công trong mọi việc bạn làm!",
-    "Bạn là điều tuyệt vời nhất của ngày hôm nay!"
-];
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-// Hiển thị lời chúc ngẫu nhiên khi bấm nút
-document.getElementById('congratulateBtn').addEventListener('click', function() {
-    var messageDiv = document.getElementById('message');
-    var randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    
-    // Hiển thị lời chúc
-    document.getElementById('randomMessage').innerText = randomMessage;
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    text-align: center;
+}
 
-    // Hiện/ẩn lời chúc với hiệu ứng
-    messageDiv.classList.toggle('hidden');
-    if (!messageDiv.classList.contains('hidden')) {
-        messageDiv.style.animation = "fadeIn 1.5s ease";
+.container {
+    position: relative;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #ff5252;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+button {
+    background-color: #ff5252;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #ff7a7a;
+}
+
+.heart-icon {
+    font-size: 3rem;
+    color: #ff5252;
+    margin-top: 20px;
+}
+
+.message {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    animation: fadeIn 1.5s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+#heartContainer {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden; /* Đảm bảo trái tim không vượt ra ngoài màn hình */
+}
+
+.heart {
+    position: absolute;
+    font-size: 2rem;
+    color: #ff5252;
+    animation: float 3s ease-in-out forwards;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
     }
+    100% {
+        transform: translateY(-150px) scale(1.5);
+        opacity: 0;
+    }
+}
 
-    // Tạo trái tim bay
-    createFloatingHearts();
-});
-
-// Hàm tạo trái tim bay
-function createFloatingHearts() {
-    const heartContainer = document.getElementById('heartContainer');
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    
-    // Vị trí ngẫu nhiên cho trái tim
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.top = Math.random() * 100 + 'vh'; // Đặt vị trí ngẫu nhiên trong khung hình
-
-    // Thêm trái tim vào container
-    heartContainer.appendChild(heart);
-    
-    // Xóa trái tim sau khi bay lên (3 giây)
-    setTimeout(() => {
-        heart.remove();
-    }, 3000);
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
