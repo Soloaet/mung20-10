@@ -1,77 +1,58 @@
-/* Reset */
-* {
+body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
 }
 
-/* Hero section */
 .hero {
-    background-image: url('https://source.unsplash.com/1600x900/?flowers,celebration');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    text-align: center;
 }
 
 .container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 2s ease-in-out;
+    position: relative;
 }
 
 h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 4rem;
-    color: #e91e63;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    color: #ff5252;
 }
 
 p {
-    font-size: 1.3rem;
-    margin: 20px 0;
+    font-size: 1.2rem;
     color: #333;
 }
 
 button {
-    background-color: #e91e63;
-    color: white;
+    background-color: #ff5252;
+    color: #fff;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #d81b60;
-    transform: scale(1.05);
+    background-color: #ff7a7a;
 }
 
-/* Heart Icon */
 .heart-icon {
     font-size: 3rem;
     color: #ff5252;
-    margin-bottom: 20px;
-    animation: pulse 1.5s infinite;
+    margin-top: 20px;
 }
 
-/* Messages */
 .message {
-    margin-top: 20px;
     font-size: 1.5rem;
-    color: #4caf50;
+    margin-top: 20px;
     animation: fadeIn 1.5s ease;
 }
 
@@ -79,36 +60,11 @@ button:hover {
     display: none;
 }
 
-/* Keyframe for fade-in effect */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Keyframe for heart pulse effect */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
 #heartContainer {
     position: absolute;
     width: 100%;
     height: 100vh;
-    pointer-events: none; /* Không cho phép nhấn vào trái tim */
+    pointer-events: none;
     top: 0;
     left: 0;
     z-index: 1;
@@ -120,18 +76,26 @@ button:hover {
     font-size: 2rem;
     color: #ff5252;
     animation: float 3s ease-in-out forwards;
-    transform: translateY(0); /* Bắt đầu tại vị trí dưới */
+    transform: translateY(0);
     opacity: 1;
 }
 
-/* Hiệu ứng trái tim bay lên */
 @keyframes float {
     0% {
         transform: translateY(0) scale(1);
         opacity: 1;
     }
     100% {
-        transform: translateY(-150px) scale(1.5); /* Trái tim bay lên và phóng to */
-        opacity: 0; /* Biến mất dần */
+        transform: translateY(-150px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
