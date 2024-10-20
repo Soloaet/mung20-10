@@ -26,16 +26,19 @@ document.getElementById('congratulateBtn').addEventListener('click', function() 
 });
 
 // Hàm tạo trái tim bay
-    function createFloatingHearts() {
+function createFloatingHearts() {
     const heartContainer = document.getElementById('heartContainer');
     const heart = document.createElement('div');
     heart.classList.add('heart');
     
-    // Vị trí ngẫu nhiên và thêm trái tim vào container
+    // Vị trí ngẫu nhiên cho trái tim
     heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.top = Math.random() * 100 + 'vh'; // Đặt vị trí ngẫu nhiên trong khung hình
+
+    // Thêm trái tim vào container
     heartContainer.appendChild(heart);
     
-    // Xóa trái tim sau khi hoàn thành chuyển động
+    // Xóa trái tim sau khi bay lên (3 giây)
     setTimeout(() => {
         heart.remove();
     }, 3000);
